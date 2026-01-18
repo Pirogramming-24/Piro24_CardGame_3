@@ -1,0 +1,35 @@
+<h2>게임 상세 정보</h2>
+
+<p>
+    {{ game.attacker }} vs {{ game.defender }}
+</p>
+
+<hr>
+
+{% if can_cancel %}
+    <p>진행중</p>
+    <p>나: {{ my_card }}</p>
+    <a href="{% url 'game:game_cancel' game.id %}">게임취소</a>
+{% endif %}
+
+{% if can_counter %}
+    <a href="{% url 'game:counter_attack' game.id %}">대응하기</a>
+{% endif %}
+
+
+
+{% if game.status == "FINISHED" %}
+    {% if game.win_rule == "HIGH" %}
+        <p>숫자가 높은 사람이 이깁니다.</p>
+    {% else %}
+        <p>숫자가 낮은 사람이 이깁니다.</p>
+    {% endif %}
+
+    <p>내 카드: {{ my_card }}</p>
+    <p>상대 카드: {{ opponent_card }}</p>
+    <p>결과: {{ result }}</p>
+    <p>점수: {{ my_score }}</p>
+{% endif %}
+
+<br><br>
+<a href="{% url 'game:list_game' %}">목록으로</a>

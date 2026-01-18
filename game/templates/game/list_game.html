@@ -1,0 +1,50 @@
+<h2>내 게임 목록</h2>
+
+<div>
+    <a href="?filter=all">전체</a> |
+    <a href="?filter=ongoing">진행중</a> |
+    <a href="?filter=finished">종료</a>
+</div>
+
+<hr>
+
+{% for game in page_obj %}
+    <p>
+        {{ game.attacker }} vs {{ game.defender }} |
+
+        {% if game.can_counter %}
+            <a href="{% url 'game:counter_attack' game.id %}">CounterAttack</a>
+
+        {% elif game.can_cancel %}
+            <a href="{% url 'game:game_cancel' game.id %}">취소</a>
+
+        {% else %}
+            {{ game.display_status }}
+        {% endif %}
+        | <a href="{% url 'game:game_detail' game.id %}">상세보기</a>
+
+    </p>
+{% empty %}
+    <p>게임이 없습니다.</p>
+{% endfor %}
+
+<hr>
+
+<div>
+    {% if page_obj.has_previous %}
+        <a href="?filter={{ filter }}&page=1">처음</a>
+        <a href="?filter={{ filter }}&page={{ page_obj.previous_page_number }}">이전</a>
+    {% endif %}
+
+    <span>
+        {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
+    </span>
+
+    {% if page_obj.has_next %}
+        <a href="?filter={{ filter }}&page={{ page_obj.next_page_number }}">다음</a>
+        <a href="?filter={{ filter }}&page={{ page_obj.paginator.num_pages }}">마지막</a>
+    {% endif %}
+</div>
+
+
+

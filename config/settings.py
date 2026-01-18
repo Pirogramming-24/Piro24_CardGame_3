@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     # "allauth.socialaccount.providers.kakao",
 
     # apps
-    "account.apps.AccountConfig",
+    "account",
     "game",
 ]
 

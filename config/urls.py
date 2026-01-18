@@ -33,5 +33,5 @@ urlpatterns = [
 
     #   앱 API
     path("", include("account.urls")),
-    # path("", include("game.urls")),
+    path("game/", include("game.urls")),
 ]
