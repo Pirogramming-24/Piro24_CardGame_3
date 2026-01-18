@@ -1,9 +1,12 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 import random
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
 from .models import Game
+from .utils import calculate_game_result, is_valid_card_number
 from django.core.paginator import Paginator
 
 User = get_user_model()
@@ -125,6 +128,40 @@ def game_detail(request, pk):
 def counter_attack(request, pk):
     game = get_object_or_404(Game, pk=pk, defender=request.user)
 
+    if game.status == Game.Status.FINISHED:
+        return redirect('game:game_detail', pk=game.id)
+
+    cards = random.sample(range(1, 11), 5)
+
     return render(request, "game/counter_attack.html", {
         "game": game,
+        "cards": cards,
     })
+
+# 7. 반격 제출
+@login_required
+@require_POST
+def submit_counter_attack(request, pk):
+    game = get_object_or_404(Game, pk=pk)
+
+    if game.defender != request.user:
+        return redirect('game:list_game')
+
+    if game.status == Game.Status.FINISHED:
+        return redirect('game:game_detail', pk=game.id)
+
+    selected_card = request.POST.get('card')
+
+    if not is_valid_card_number(selected_card):
+        return redirect('game:counter_attack', pk=game.id)
+
+    selected_card = int(selected_card)
+
+    game.defender_card = selected_card
+    game.status = Game.Status.FINISHED
+
+    calculate_game_result(game)
+
+    game.save()
+
+    return redirect('game:game_detail', pk=game.id)

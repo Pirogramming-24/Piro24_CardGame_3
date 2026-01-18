@@ -16,6 +16,12 @@ class Game(models.Model):
         RESPONDED = "RESPONDED", "CounterAttack"
         FINISHED = "FINISHED", "종료"
 
+    class Result(models.TextChoices):
+        WIN = 'win', '승리'
+        LOSE = 'lose', '패배'
+        DRAW = 'draw', '무승부'
+        PENDING = 'pending', '대기중'
+
     attacker = models.ForeignKey(User, on_delete=models.CASCADE, related_name="attacker_games", null=True, blank=True)
     defender = models.ForeignKey(User, on_delete=models.CASCADE, related_name="defender_games", null=True, blank=True)
     
@@ -26,7 +32,14 @@ class Game(models.Model):
     win_rule = models.CharField(max_length=10, choices=WinRule.choices)
     status = models.CharField(max_length=15, choices=Status.choices, default=Status.REQUESTED)
 
+    attacker_result = models.CharField(max_length=10, choices=Result.choices, default=Result.PENDING)
+    defender_result = models.CharField(max_length=10, choices=Result.choices, default=Result.PENDING)
+
+    attacker_score_change = models.IntegerField(default=0)
+    defender_score_change = models.IntegerField(default=0)
+
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"Game {self.id}: {self.attacker} vs {self.defender}"
@@ -53,3 +66,23 @@ class Game(models.Model):
             self.status == self.Status.REQUESTED
             and self.defender == user
         )
+
+    def result_for(self, user):
+        if user == self.attacker:
+            return self.get_attacker_result_display()
+        elif user == self.defender:
+            return self.get_defender_result_display()
+        return ''
+
+    def score_for(self, user):
+        if user == self.attacker:
+            return self.attacker_score_change
+        elif user == self.defender:
+            return self.defender_score_change
+        return 0
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = '게임'
+        verbose_name_plural = '게임 목록'
+
