@@ -37,6 +37,25 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
+    "django.contrib.sites",
+
+    # drf
+    "rest_framework",
+    "drf_spectacular",
+
+    # allauth
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+
+    # provider 예시 (쓸 것만)
+    "allauth.socialaccount.providers.google",
+    # "allauth.socialaccount.providers.kakao",
+
+    # apps
+    "account.apps.AccountConfig",
+    "game",
 ]
 
 MIDDLEWARE = [
@@ -45,6 +64,9 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+
+    "allauth.account.middleware.AccountMiddleware", 
+
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
@@ -67,6 +89,50 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "config.wsgi.application"
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.SessionAuthentication",
+    ),
+    "DEFAULT_PERMISSION_CLASSES": (
+        # 기본은 잠그는 게 정상. Swagger 테스트도 로그인 하면 통과합니다.
+        "rest_framework.permissions.IsAuthenticated",
+    ),
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "API",
+    "VERSION": "0.1.0",
+    "SWAGGER_UI_SETTINGS": {
+        "withCredentials": True,   
+    },
+}
+
+# allauth 기본 설정(최소)
+SITE_ID = 1
+
+# 리다이렉트 확인 화면 스킵
+SOCIALACCOUNT_LOGIN_ON_GET = True
+# 로그아웃 확인 화면 스킵
+ACCOUNT_LOGOUT_ON_GET = True
+
+ACCOUNT_EMAIL_REQUIRED = False
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = "username"
+ACCOUNT_EMAIL_VERIFICATION = "none"
+
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+SOCIALACCOUNT_FORMS = {
+    "signup": "account.forms.SocialSignupForm",
+}
+
+# Django Auth에서 템플릿 접근을 위한 코드
+TEMPLATES[0]["DIRS"] = [BASE_DIR / "templates"]
 
 
 # Database
@@ -102,9 +168,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "ko-kr"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Seoul"
 
 USE_I18N = True
 
