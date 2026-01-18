@@ -218,3 +218,5 @@ hand_landmarker.task
 # Django
 db.sqlite3
 
+.vscode/
+test.py
