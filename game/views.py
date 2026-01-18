@@ -138,6 +138,7 @@ def counter_attack(request, pk):
         "cards": cards,
     })
 
+
 # 7. 반격 제출
 @login_required
 @require_POST
@@ -165,3 +166,15 @@ def submit_counter_attack(request, pk):
     game.save()
 
     return redirect('game:game_detail', pk=game.id)
+
+
+# 8. 랭킹 페이지
+@login_required
+def ranking(request):
+    from account.models import Profile
+    
+    profiles = Profile.objects.all().order_by('-score')
+    
+    return render(request, "game/ranking.html", {
+        "profiles": profiles,
+    })

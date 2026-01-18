@@ -1,0 +1,31 @@
+<h2>랭킹</h2>
+
+<p>전체 유저 점수 순위</p>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>순위</th>
+            <th>유저명</th>
+            <th>닉네임</th>
+            <th>점수</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for profile in profiles %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ profile.user.username }}</td>
+            <td>{{ profile.nickname|default:"미설정" }}</td>
+            <td>{{ profile.score }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">등록된 유저가 없습니다.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<br>
+<a href="{% url 'game:list_game' %}">게임 목록으로</a>

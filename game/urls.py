@@ -11,4 +11,5 @@ urlpatterns = [
     path("counter/<int:pk>/", views.counter_attack, name="counter_attack"),
     path("counter/<int:pk>/submit/", views.submit_counter_attack, name="submit_counter"),
     path("cancel/<int:pk>/", views.game_cancel, name="game_cancel"),
+    path("ranking/", views.ranking, name="ranking"),
 ]
