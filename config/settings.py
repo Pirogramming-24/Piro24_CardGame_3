@@ -55,6 +55,7 @@ INSTALLED_APPS = [
 
     # provider 예시 (쓸 것만)
     "allauth.socialaccount.providers.google",
+    "allauth.socialaccount.providers.naver",
     # "allauth.socialaccount.providers.kakao",
 
     # apps
@@ -143,7 +144,14 @@ SOCIALACCOUNT_PROVIDERS = {
             "key": "",
         },
         "SCOPE": ["profile", "email"],
-    }
+    },
+    "naver": {
+        "APP": {
+            "client_id": os.getenv("NAVER_CLIENT_ID"),
+            "secret": os.getenv("NAVER_CLIENT_SECRET"),
+            "key": "",
+        },
+    },
 }
 
 # Django Auth에서 템플릿 접근을 위한 코드
