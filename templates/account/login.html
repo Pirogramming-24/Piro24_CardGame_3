@@ -2,13 +2,12 @@
 <!-- 로그인 화면 -->
 <!-- !!! 절대 위치 옮기면 안돼요 !!! -->
 <!-- allauth 로그인 html을 덮어씌우는 구조 -->
-
 {% load static %} {% load socialaccount %}
 
 	<link rel="stylesheet" href="{% static 'account/css/login.css' %}" />
 	<body>
 		<header>
-			<h3>PIROGRAMMER CARD GAME</h3>
+			<a href="/"><h3>PIROGRAMMER CARD GAME</h3></a>
 			<div class="header_menu">
 				{% if user.is_authenticated %}
 				<a href="/game/">Game</a>
@@ -52,6 +51,8 @@
 
           <hr>
           <a href="{% provider_login_url 'google' %}"><img src="{% static 'account/images/google.png' %}" alt="Google" />Google Login</a>
+          <a href="{% provider_login_url 'naver' %}">
+            <img src="{% static 'account/images/naver.png' %}" alt="Naver">Naver Login</a>
         </div>
         <a href="{% url 'account_signup' %}">Sign Up</a>
       </div>
@@ -59,3 +60,5 @@
 		<footer></footer>
 	</body>
 </html>
+
+

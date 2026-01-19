@@ -24,7 +24,12 @@ header {
 	color: #fff1a8;
 }
 
-header h3 {
+header a {
+	text-decoration: none;
+	color: #fff1a8;
+}
+
+header a h3 {
 	font-size: 30px;
 	font-style: normal;
 }
@@ -117,6 +122,18 @@ main .login_form_jmj .login_jmj {
 	font-size: 25px;
 }
 
+main .login_form_jmj .login_jmj p {
+    text-align: start;
+	margin: 0 30px; 
+	display: flex; 
+	align-items: center; 
+    gap: 10px; 
+}
+
+main .login_form_jmj .login_jmj p label {
+    min-width: 100px;
+}
+
 main .login_form_jmj .login_jmj form button {
 	margin: 10px auto;
 	width: 30%;
@@ -127,7 +144,14 @@ main .login_form_jmj .login_jmj form button {
 	font-style: normal;
 	border-radius: 10px;
 	background: #fff;
-	border-color: #000;
+	border: 1px solid #000;
+}
+
+main .login_form_jmj .login_jmj form button:hover{
+    cursor: url("../images/click_cursor.png"), pointer !important;
+    background: #000;
+    color: #fff;
+    border-color: #fff;    
 }
 
 main .login_form_jmj .login_jmj a {
@@ -141,6 +165,7 @@ main .login_form_jmj .login_jmj a:hover {
     background: #fff;
     border-color: #000;
     color: #000;
+    cursor: url("../images/click_cursor.png"), pointer !important;
 }
 
 main .login_form_jmj .login_jmj a img {
@@ -170,6 +195,7 @@ main .login_form_jmj a:hover {
     color: #fff;
     background: #00FE0D;
     border-color: #fff;
+    cursor: url("../images/click_cursor.png"), pointer !important;
 }
 
 footer {
