@@ -243,3 +243,15 @@ footer {
 	height: 50px;
 	background: #100e24;
 }
+
+header a {
+    text-decoration: none;
+    color: #fff1a8;
+    display: flex;
+    align-items: center;
+}
+
+header a h3:hover {
+    color: #ffe100;
+    cursor: url("../images/click_cursor.png"), pointer !important;
+}

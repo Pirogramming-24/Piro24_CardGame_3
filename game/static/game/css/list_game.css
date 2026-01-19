@@ -311,3 +311,16 @@ footer {
 .result_title_jmj.lose {
     color: #D62020;
 }
+
+header a {
+    text-decoration: none; /* 밑줄 제거 */
+    color: #fff1a8;        /* 색상 유지 */
+    display: flex;         /* 위치 틀어짐 방지 */
+    align-items: center;   /* 세로 중앙 정렬 */
+}
+
+/* 마우스 올렸을 때 효과 */
+header a h3:hover {
+    color: #ffe100;
+    cursor: url("../images/click_cursor.png"), pointer !important;
+}
