@@ -137,6 +137,7 @@ body {
     color: #100e24; /* 검은 글씨 */
     font-size: 26px;
     box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+    transform: translate(-20px, 0px);
 }
 
 .label_mw {
@@ -166,4 +167,79 @@ body {
 .ranking_wrapper_mw a:hover {
     color: #ffe100;
     text-decoration: underline;
+}
+
+/*왕관 이미지 스타일 */
+.crown_img_mw {
+    width: 40px;          
+    height: auto;         
+    vertical-align: middle;
+
+    transform: translate(13px, 0px); 
+}
+
+/* 'Game List' 링크 위치 및 스타일 조절 */
+.game_list_link_wrap_mw {
+    margin-top: 30px;    /* 1. 랭킹 카드와의 간격 조절 (숫자를 키우면 더 아래로) */
+    text-align: center;  /* 2. 가운데 정렬 */
+
+    transform: translate(-10px, 0px); 
+}
+
+.game_list_link_wrap_mw a {
+    color: #fff;              
+    text-decoration: underline;
+    font-size: 24px;          
+}
+
+.game_list_link_wrap_mw a:hover {
+    color: #ffe100;           
+    text-decoration: none;    
+}
+
+/* --- 헤더 --- */
+header {
+	height: 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 85px;
+	background: #100e24;
+	color: #fff1a8;
+    /* 폰트 설정 (필요시 주석 해제) */
+    /* font-family: "Jersey 10", sans-serif; */
+}
+
+header h3 {
+	font-size: 30px;
+	font-style: normal;
+    margin: 0; /* h3 기본 여백 제거 */
+}
+
+header h3:hover {
+	color: #ffe100;
+	cursor: url("../images/click_cursor.png"), pointer !important;
+}
+
+header .header_menu {
+	display: flex;
+	font-size: 30px;
+	font-style: normal;
+}
+
+/* p 태그 대신 a 태그로 변경됨 */
+header .header_menu a {
+	margin: 0 20px;
+    color: #fff1a8;        /* 링크 색상 유지 */
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+header .header_menu a:hover {
+	color: #ffe100;
+	cursor: url("../images/click_cursor.png"), pointer !important;
+}
+
+footer {
+	height: 50px;
+	background: #100e24;
 }
