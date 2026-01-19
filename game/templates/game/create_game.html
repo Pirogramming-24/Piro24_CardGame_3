@@ -1,33 +1,52 @@
-<!DOCTYPE html>
+{% load static %}
+<!doctype html>
 <html>
-<head>
-    <title>Game Create</title>
-</head>
-<body>
-    <h2>게임 생성</h2>
+	<head>
+		<link rel="stylesheet" href="{% static 'game/css/create_game.css' %}" />
+		<title>Game Create</title>
+	</head>
+	<body>
+		<header>
+			<h3>PIROGRAMMER CARD GAME</h3>
+			<div class="header_menu">
+				<p>Game</p>
+				<p>Ranking</p>
+				<p>Logout</p>
+			</div>
+		</header>
+        <main>
+			<h3>PICK YOUR CARD</h3>
+            <form method="post">
+			{% csrf_token %}
+			<div class="defender_jmj">
+				<p>Defender</p>
+			    <select name="defender_id" required>
+				{% for user in users %}
+				    <option value="{{ user.id }}">{{ user.username }}</option>
+				{% endfor %}
+			</select>
+			</div>
 
-    <p>로그인 유저: <b>{{ request.user.username }}</b></p>
+			<div class="card_select_jmj">
+			{% for card in cards %}
+			<label>
+				<input
+					type="radio"
+					name="attacker_card"
+					value="{{ card }}"
+					required
+				/>
+				{{ card }}
+			</label>
+			{% endfor %}
+			</div>
+			<!-- if attack -->
+			<button class="attackbutton_jmj" type="submit">Attack!</button>
+            		</form>
 
-    <form method="post">
-        {% csrf_token %}
+		<p>USER: <b>{{ request.user.username }}</b></p>
 
-        <h3>1️⃣ 카드 선택</h3>
-        {% for card in cards %}
-            <label>
-                <input type="radio" name="attacker_card" value="{{ card }}" required>
-                {{ card }}
-            </label>
-        {% endfor %}
 
-        <h3>2️⃣ 상대 선택</h3>
-        <select name="defender_id" required>
-            {% for user in users %}
-                <option value="{{ user.id }}">{{ user.username }}</option>
-            {% endfor %}
-        </select>
-
-        <br><br>
-        <button type="submit">게임 신청</button>
-    </form>
-</body>
+        <footer></footer>
+	</body>
 </html>
