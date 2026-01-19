@@ -54,9 +54,10 @@
 
             {% elif game.status == "FINISHED" %}
                 {% if game.user_result == "win" %}
-                    <span class="badge_common_mw badge_win_mw">WIN</span>
+                    <h2 class="result_title_jmj">WIN!</h2>
+                
                 {% elif game.user_result == "lose" %}
-                    <span class="badge_common_mw badge_lose_mw">LOSE</span>
+                    <h2 class="result_title_jmj">LOSE</h2>
                 {% endif %}
             
             {% else %}
