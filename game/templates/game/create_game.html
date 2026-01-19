@@ -1,66 +1,57 @@
+{% extends "base.html" %}
 {% load static %}
-<!doctype html>
-<html>
-	<head>
-		<link rel="stylesheet" href="{% static 'game/css/create_game.css' %}" />
-		<title>Game Create</title>
-	</head>
-	<body>
-		<header>
-			<a href="/"><h3>PIROGRAMMER CARD GAME</h3></a>
-			<div class="header_menu">
-				<a href="/game/list">Game</a>
-				<a href="/game/ranking">Ranking</a>
-				<a href="/logout/">Logout</a>
-			</div>
-		</header>
-		<main>
-			<h3>PICK YOUR CARD</h3>
-			<form method="post">
-				{% csrf_token %}
-				<div class="defender_jmj">
-					<p>Defender</p>
-					<select name="defender_id" required>
-						{% for user in users %}
-						<option value="{{ user.id }}">
-							{{ user.username }}
-						</option>
-						{% endfor %}
-					</select>
-				</div>
-				<div class="card_select_jmj">
-					{% for card in cards %}
-					<label>
-						<input
-							type="radio"
-							name="attacker_card"
-							value="{{ card }}"
-							required
-						/>
-						{{ card }}
-					</label>
-					{% endfor %}
-				</div>
-				<button class="attackbutton_jmj" type="submit">Attack!</button>
-			</form>
-		</main>
-		<footer></footer>
-		<script>
-			document
-				.querySelectorAll('input[type="radio"][name="attacker_card"]')
-				.forEach((radio) => {
-					radio.addEventListener("change", function () {
-						document
-							.querySelectorAll(".card_select_jmj label")
-							.forEach((label) => {
-								label.classList.remove("selected");
-							});
 
-						if (this.checked) {
-							this.parentElement.classList.add("selected");
-						}
-					});
-				});
-		</script>
-	</body>
-</html>
+{% block title %}Game Create{% endblock %}
+
+{% block header %}
+<link rel="stylesheet" href="{% static 'game/css/create_game.css' %}" />
+{% endblock %}
+
+{% block content %}
+<h3>PICK YOUR CARD</h3>
+    <form method="post">
+        {% csrf_token %}
+        <div class="defender_jmj">
+            <p>Defender</p>
+            <select name="defender_id" required>
+                {% for user in users %}
+                <option value="{{ user.id }}">
+                    {{ user.username }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="card_select_jmj">
+            {% for card in cards %}
+            <label>
+                <input
+                    type="radio"
+                    name="attacker_card"
+                    value="{{ card }}"
+                    required
+                />
+                {{ card }}
+            </label>
+            {% endfor %}
+        </div>
+        <button class="attackbutton_jmj" type="submit">Attack!</button>
+    </form>
+
+    <script>
+        document
+            .querySelectorAll('input[type="radio"][name="attacker_card"]')
+            .forEach((radio) => {
+                radio.addEventListener("change", function () {
+                    document
+                        .querySelectorAll(".card_select_jmj label")
+                        .forEach((label) => {
+                            label.classList.remove("selected");
+                        });
+
+                    if (this.checked) {
+                        this.parentElement.classList.add("selected");
+                    }
+                });
+            });
+    </script>
+{% endblock %}

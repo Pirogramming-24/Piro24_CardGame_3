@@ -24,18 +24,20 @@ header {
 	color: #fff1a8;
 }
 
-header a {
+header > a {
 	text-decoration: none;
 	color: #fff1a8;
+    display: flex;
+    align-items: center;
 }
 
-header a h3 {
+header h3 {
 	font-size: 30px;
 	font-style: normal;
-	color: #fff1a8;
+    margin: 0;
 }
 
-header a h3:hover {
+header > a:hover h3 {
 	color: #ffe100;
 	cursor: url("../images/click_cursor.png"), pointer !important;
 }
@@ -57,6 +59,7 @@ header .header_menu a:hover {
 	cursor: url("../images/click_cursor.png"), pointer !important;
 }
 
+/* 메인 컨텐츠 */
 main {
 	width: 100%;
 	min-height: calc(100vh - 100px);
@@ -127,6 +130,7 @@ main .card_select_jmj label.selected {
     transform: scale(1.1) !important;
 }
 
+/* 애니메이션 */
 main .card_select_jmj label:nth-child(1) {
 	animation: cardSpreadLeft1 0.5s ease-out backwards;
 	animation-delay: 0.2s;
