@@ -60,7 +60,7 @@ def list_game(request):
     elif filter_type == "finished":
         games_qs = games_qs.filter(status=Game.Status.FINISHED)
 
-    games_qs = games_qs.order_by("-created_at")
+    games_qs = games_qs.order_by("-id") #역순정렬
 
     # 페이지네이션
     paginator = Paginator(games_qs, 8)  
@@ -71,6 +71,7 @@ def list_game(request):
         game.display_status = game.display_status_for(request.user)
         game.can_counter = game.can_counter(request.user)
         game.can_cancel = game.can_cancel(request.user)
+        game.user_result = game.result_for(request.user) #html이랑 연결하기 위한 임시 꼬리표
 
     return render(request, "game/list_game.html", {
         "page_obj": page_obj,
@@ -179,6 +180,16 @@ def ranking(request):
     
     profiles = Profile.objects.all().order_by('-score')
     
+    my_rank = "Unranked" # rank계산 추가
+    if hasattr(request.user, 'profile'):
+        my_profile = request.user.profile
+        
+        for index, profile in enumerate(profiles):
+            if profile == my_profile:
+                my_rank = index + 1
+                break
+    
     return render(request, "game/ranking.html", {
         "profiles": profiles,
+        "my_rank": my_rank,
     })
