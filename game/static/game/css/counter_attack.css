@@ -24,12 +24,18 @@ header {
 	color: #fff1a8;
 }
 
-header h3 {
-	font-size: 30px;
-	font-style: normal;
+header a {
+	text-decoration: none;
+	color: #fff1a8;
 }
 
-header h3:hover {
+header a h3 {
+	font-size: 30px;
+	font-style: normal;
+	color: #fff1a8;
+}
+
+header a h3:hover {
 	color: #ffe100;
 	cursor: url("../images/click_cursor.png"), pointer !important;
 }
@@ -40,11 +46,13 @@ header .header_menu {
 	font-style: normal;
 }
 
-header .header_menu p {
+header .header_menu a {
+	text-decoration: none;
+	color: #fff1a8;
 	margin: 0 20px;
 }
 
-header .header_menu p:hover {
+header .header_menu a:hover {
 	color: #ffe100;
 	cursor: url("../images/click_cursor.png"), pointer !important;
 }
