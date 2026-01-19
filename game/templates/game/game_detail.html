@@ -7,25 +7,25 @@
 	</head>
 	<body>
 		<header>
-			<h3>PIROGRAMMER CARD GAME</h3>
+			<a href="/"><h3>PIROGRAMMER CARD GAME</h3></a>
 			<div class="header_menu">
-				<p>Game</p>
-				<p>Ranking</p>
-				<p>Logout</p>
+				<a href="/game/list">Game</a>
+				<a href="/game/ranking">Ranking</a>
+				<a href="/logout/">Logout</a>
 			</div>
 		</header>
 		<main>
 			{% if game.status == "FINISHED" %}
 			<!-- 게임 종료 시: 결과 표시 -->
 			<div class="result_container_jmj">
+				{% if result == "승리" %}
+				<h2 class="result_title_jmj">WIN!</h2>
+				{% elif result == "패배" %}
+				<h2 class="result_title_jmj">LOSE</h2>
+				{% elif result == "무승부" %}
+				<h2 class="result_title_jmj">DRAW</h2>
+				{% endif %}
 				<div class="game_result_jmj">
-					{% if result == "승리" %}
-					<h2 class="result_title_jmj">WIN!</h2>
-					{% elif result == "패배" %}
-					<h2 class="result_title_jmj">LOSE</h2>
-					{% elif result == "무승부" %}
-					<h2 class="result_title_jmj">DRAW</h2>
-					{% endif %}
 					<div class="game_info_jmj">
 						{% if game.win_rule == "HIGH" %}
 						<p class="info_jmj">Higher number wins.</p>
