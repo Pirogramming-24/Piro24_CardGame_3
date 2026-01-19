@@ -1,0 +1,184 @@
+@import url("https://fonts.googleapis.com/css2?family=Jersey+10&display=swap");
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	cursor: url("../images/cursor.png"), auto !important;
+}
+
+body {
+	font-family: "Jersey 10", sans-serif;
+	font-weight: 200;
+	font-style: normal;
+	cursor: url("../images/cursor.png"), auto !important;
+}
+
+header {
+	height: 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 85px;
+	background: #100e24;
+	color: #fff1a8;
+}
+
+header h3 {
+	font-size: 30px;
+	font-style: normal;
+}
+
+header h3:hover {
+	color: #ffe100;
+	cursor: url("../images/click_cursor.png"), pointer !important;
+}
+
+header .header_menu {
+	display: flex;
+	font-size: 30px;
+	font-style: normal;
+}
+
+header .header_menu p {
+	margin: 0 20px;
+}
+
+header .header_menu p:hover {
+	color: #ffe100;
+	cursor: url("../images/click_cursor.png"), pointer !important;
+}
+
+main {
+	width: 100%;
+	min-height: calc(100vh - 100px);
+	background-image: url("../images/background.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	text-align: center;
+}
+
+main .game_title_jmj {
+	text-align: center;
+}
+
+main .game_title_jmj img {
+	width: 100px;
+	margin-top: 30px;
+	margin-bottom: -5px;
+	animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+	0% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+main .game_title_jmj h3 {
+	color: var(--point1, #ffe100);
+	-webkit-text-stroke-width: 5px;
+	-webkit-text-stroke-color: #000;
+	font-size: 50px;
+	font-weight: 50;
+	paint-order: stroke fill;
+	margin-bottom: 15px;
+}
+
+main .status_container_jmj {
+	width: 60%;
+	height: 310px;
+	background: #0f1a33;
+	border-radius: 20px;
+	text-align: center;
+	padding: 20px 20px 50px 20px;
+	margin: 0 auto;
+}
+
+main .status_container_jmj .game_status_jmj {
+	width: 100%;
+	height: 220px;
+	background: #344e87;
+	text-align: center;
+	margin: 0 auto;
+	border-radius: 15px;
+	position: relative;
+}
+
+main .status_container_jmj .game_status_jmj .status_jmj {
+	padding-top: 10px;
+	color: #fff;
+	font-size: 70px;
+}
+
+main .status_container_jmj .game_status_jmj p {
+	color: #fff;
+	font-size: 45px;
+}
+
+main .status_container_jmj .btn_section_jmj {
+	display: flex;
+	justify-content: center;
+}
+
+main .status_container_jmj .btn_section_jmj a {
+	display: inline-block;
+	margin: 15px 20px;
+}
+
+main .status_container_jmj .btn_section_jmj .first_btn_jmj {
+	width: 30%;
+	height: 40px;
+	color: #fff;
+	text-decoration: none;
+	font-size: 25px;
+	background: #d62020;
+	border: 2px solid #fff;
+	border-radius: 10px;
+	line-height: 40px;
+}
+
+main .status_container_jmj .btn_section_jmj .first_btn_jmj:hover {
+	background: #ff3333;
+	cursor: url("../images/click_cursor.png"), pointer !important;
+}
+
+main .status_container_jmj .btn_section_jmj .second_btn_jmj {
+	width: 30%;
+	height: 40px;
+	color: #fff;
+	text-decoration: none;
+	font-size: 25px;
+	background: #09ba00;
+	border: 2px solid #fff;
+	border-radius: 10px;
+	line-height: 40px;
+}
+
+main .status_container_jmj .btn_section_jmj .second_btn_jmj:hover {
+	background: #0ee802;
+	cursor: url("../images/click_cursor.png"), pointer !important;
+}
+
+main .monster_container_jmj {
+	position: relative;
+}
+
+main .monster_container_jmj img {
+	width: 500px;
+	position: absolute;
+	bottom: 65px;
+	right: 350px;
+}
+
+footer {
+	height: 50px;
+	background: #100e24;
+}

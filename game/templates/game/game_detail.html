@@ -1,35 +1,106 @@
-<h2>게임 상세 정보</h2>
+{% load static %}
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" href="{% static 'game/css/game_detail.css' %}" />
+		<title>Game Detail</title>
+	</head>
+	<body>
+		<header>
+			<h3>PIROGRAMMER CARD GAME</h3>
+			<div class="header_menu">
+				<p>Game</p>
+				<p>Ranking</p>
+				<p>Logout</p>
+			</div>
+		</header>
+		<main>
+			{% if game.status == "FINISHED" %}
+			<!-- 게임 종료 시: 결과 표시 -->
+			<div class="result_container_jmj">
+				<div class="game_result_jmj">
+					{% if result == "WIN" %}
+					<h2 class="result_title_jmj">WIN!</h2>
+					{% else %}
+					<h2 class="result_title_jmj">LOSE</h2>
+					{% endif %}
 
-<p>
-    {{ game.attacker }} vs {{ game.defender }}
-</p>
+					<div class="game_info_jmj">
+						{% if game.win_rule == "HIGH" %}
+						<p class="info_jmj">Higher number wins.</p>
+						{% else %}
+						<p class="info_jmj">Lower number wins.</p>
+						{% endif %}
 
-<hr>
+						<p class="card_result_jmj">ME : {{ my_card }}</p>
+						<p class="card_result_jmj">
+							Challenger : {{ opponent_card }}
+						</p>
+						<p class="score_result_jmj">SCORE: {{ my_score }}</p>
+					</div>
 
-{% if can_cancel %}
-    <p>진행중</p>
-    <p>나: {{ my_card }}</p>
-    <a href="{% url 'game:game_cancel' game.id %}">게임취소</a>
-{% endif %}
+					<div class="btn_section_jmj">
+						<a
+							class="list_btn_jmj"
+							href="{% url 'game:list_game' %}"
+							>List</a
+						>
+					</div>
+				</div>
+			</div>
+			{% else %}
+			<!-- 게임 진행중: PIRO GAME 표시 -->
+			<div class="game_title_jmj">
+				<img src="{% static 'game/images/game.png' %}" alt="game" />
+				<h3>PIRO GAME</h3>
+			</div>
 
-{% if can_counter %}
-    <a href="{% url 'game:counter_attack' game.id %}">대응하기</a>
-{% endif %}
+			<div class="status_container_jmj">
+				<div class="game_status_jmj">
+					{% if can_counter %}
+					<!-- 반격 가능: 상대방 카드 표시 -->
+					<h2 class="status_jmj">
+						{{ game.attacker }} vs {{ game.defender }}
+					</h2>
+					<p>playing...</p>
+					<p>ME : {{ my_card }}</p>
+					{% elif can_cancel %}
+					<!-- 취소 가능: 내 카드 표시 -->
+					<h2 class="status_jmj">
+						{{ game.attacker }} vs {{ game.defender }}
+					</h2>
+					<p>playing...</p>
+					<p>ME : {{ my_card }}</p>
+					{% endif %}
+				</div>
+				<div class="btn_section_jmj">
+					{% if can_counter %}
 
+					<a class="first_btn_jmj" href="{% url 'game:counter_attack' game.id %}"
+						>Counter Attack</a
+					>
+					{% elif can_cancel %}
 
+					<a
+						class="first_btn_jmj"
+						href="{% url 'game:game_cancel' game.id %}"
+						>Cancel</a
+					>
+					{% endif %}
 
-{% if game.status == "FINISHED" %}
-    {% if game.win_rule == "HIGH" %}
-        <p>숫자가 높은 사람이 이깁니다.</p>
-    {% else %}
-        <p>숫자가 낮은 사람이 이깁니다.</p>
-    {% endif %}
-
-    <p>내 카드: {{ my_card }}</p>
-    <p>상대 카드: {{ opponent_card }}</p>
-    <p>결과: {{ result }}</p>
-    <p>점수: {{ my_score }}</p>
-{% endif %}
-
-<br><br>
-<a href="{% url 'game:list_game' %}">목록으로</a>
+					<a class="second_btn_jmj" href="{% url 'game:list_game' %}"
+						>List</a
+					>
+				</div>
+			</div>
+			<div class="monster_container_jmj">
+				<img
+					src="{% static 'game/images/monster.png' %}"
+					alt="monster"
+				/>
+			</div>
+			{% endif %}
+		</main>
+		<footer></footer>
+	</body>
+</html>

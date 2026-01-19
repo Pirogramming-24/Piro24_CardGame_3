@@ -97,7 +97,7 @@ main .card_select_jmj label {
 	margin: 15px 0;
 	font-size: 50px;
 	line-height: 240px;
-	transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+	transition: all 0.3s ease; 
 	opacity: 1;
 }
 
@@ -112,31 +112,32 @@ main .card_select_jmj label:hover {
 	transform: translateY(-5px) scale(1.05);
 }
 
-/* 각 카드마다 개별 애니메이션 */
+main .card_select_jmj label.selected {
+    background: #fff1a8 !important;
+    border-color: #d62020 !important;
+    color: #d62020 !important;
+    transform: scale(1.1) !important;
+}
+
 main .card_select_jmj label:nth-child(1) {
-	animation: cardSpreadLeft1 0.5s ease-out;
+	animation: cardSpreadLeft1 0.5s ease-out backwards;
 	animation-delay: 0.2s;
-	animation-fill-mode: backwards;
 }
 main .card_select_jmj label:nth-child(2) {
-	animation: cardSpreadLeft2 0.5s ease-out;
+	animation: cardSpreadLeft2 0.5s ease-out backwards;
 	animation-delay: 0.1s;
-	animation-fill-mode: backwards;
 }
 main .card_select_jmj label:nth-child(3) {
-	animation: cardSpreadCenter 0.5s ease-out;
+	animation: cardSpreadCenter 0.5s ease-out backwards;
 	animation-delay: 0s;
-	animation-fill-mode: backwards;
 }
 main .card_select_jmj label:nth-child(4) {
-	animation: cardSpreadRight2 0.5s ease-out;
+	animation: cardSpreadRight2 0.5s ease-out backwards;
 	animation-delay: 0.1s;
-	animation-fill-mode: backwards;
 }
 main .card_select_jmj label:nth-child(5) {
-	animation: cardSpreadRight1 0.5s ease-out;
+	animation: cardSpreadRight1 0.5s ease-out backwards;
 	animation-delay: 0.2s;
-	animation-fill-mode: backwards;
 }
 
 @keyframes cardSpreadLeft1 {
@@ -158,26 +159,6 @@ main .card_select_jmj label:nth-child(5) {
 @keyframes cardSpreadRight1 {
 	from { opacity: 1; transform: translateX(-340px); }
 	to { opacity: 1; transform: translateX(0); }
-}
-
-main .attackbutton_jmj {
-	font-family: "Jersey 10", sans-serif;
-	font-weight: 200;
-	font-style: normal;
-	padding: 0 20px;
-	font-size: 45px;
-	background-color: #d62020;
-	color: #fff;
-	border: 3px solid #fff;
-	border-radius: 20px;
-	margin-bottom: 30px;
-	transition: all 0.2s ease;
-}
-
-main .attackbutton_jmj:hover {
-	background: #ff3333;
-	cursor: url("../images/click_cursor.png"), pointer !important;
-    transform: translateY(-5px);
 }
 
 main .counterbutton_jmj {
