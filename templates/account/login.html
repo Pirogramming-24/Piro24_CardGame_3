@@ -26,10 +26,10 @@
 				class="icon_game_jmj"
 			/>
 			<h1>PIRO GAME</h1>
-			{% csrf_token %}
       <div class="login_form_jmj">
         <div class="login_jmj">
           <form method="post" action="{% url 'account_login' %}">
+            {% csrf_token %}
             <p>
               <label for="{{ form.login.id_for_label }}">ID</label>
               {{ form.login }}
