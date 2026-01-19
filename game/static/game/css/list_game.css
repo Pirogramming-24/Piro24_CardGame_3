@@ -81,8 +81,10 @@ body {
 
 /* 리스트 아이템 */
 .game_list_mw {
+    margin: 0;
     list-style: none;
-    padding: 0;
+    padding: 20px 10px;
+    background: #22222299;
 }
 
 .game_item_mw {
@@ -288,7 +290,7 @@ footer {
 }
 
 .result_title_jmj.win {
-    color: #3B5486;
+    color: lch(59.1 113.24 287.99 / 1);
 }
 
 .result_title_jmj.lose {
