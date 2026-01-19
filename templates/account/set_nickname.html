@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>닉네임 설정</title>
+</head>
+<body>
+    <h1>닉네임 설정</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label for="nickname">닉네임</label><br>
+        <input
+            type="text"
+            id="nickname"
+            name="nickname"
+            maxlength="30"
+            required
+        >
+        <br><br>
+
+        <button type="submit">저장</button>
+    </form>
+</body>
+</html>

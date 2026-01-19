@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
@@ -7,6 +7,8 @@ from rest_framework.response import Response
 from django.contrib.auth.views import LoginView
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
+from .models import Profile
 
 
 # Create your views here.
@@ -24,14 +26,28 @@ def me(request):
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def my_profile(request):
-    p = getattr(request.user, "profile", None)
-    if not p:
-        return Response({"detail": "profile missing"}, status=500)
-    context = {
-        "score": p.score,
-        "nickname" : p.nickname,
-    }
-    return Response(context)
+    profile, _ = Profile.objects.get_or_create(user=request.user)
 
+    return Response({
+        "score": profile.score,
+        "nickname": profile.nickname,
+    })
+
+@login_required
 def set_nickname(request):
-    None
+    profile, _ = Profile.objects.get_or_create(user=request.user)
+
+    if request.method == "POST":
+        nickname = request.POST.get("nickname")
+        if nickname:
+            profile.nickname = nickname
+            profile.save()
+            return redirect("/")  # 게임 메인 등
+
+    return render(request, "account/set_nickname.html")
+    
+
+
+
+def main(request):
+    return render(request, "account/main.html")

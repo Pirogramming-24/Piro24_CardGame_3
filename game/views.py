@@ -11,6 +11,10 @@ from django.core.paginator import Paginator
 
 User = get_user_model()
 
+@login_required
+def game_main(request):
+    return render(request, "game/main.html")
+
 
 
 # 3. start 버튼을 누르면 나타나는 페이지 (= 공격하기)
