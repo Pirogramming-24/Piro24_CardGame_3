@@ -30,7 +30,7 @@ def create_game(request):
             status=Game.Status.REQUESTED
         )
 
-        return redirect("game:create_game")
+        return redirect("game:list_game")
 
     cards = random.sample(range(1, 11), 5)
     users = User.objects.exclude(id=request.user.id)

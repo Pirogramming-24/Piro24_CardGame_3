@@ -112,13 +112,6 @@ main .card_select_jmj label:hover {
 	transform: translateY(-5px) scale(1.05);
 }
 
-main .card_select_jmj label.selected {
-    background: #fff1a8 !important;
-    border-color: #d62020 !important;
-    color: #d62020 !important;
-    transform: scale(1.1) !important;
-}
-
 /* 각 카드마다 개별 애니메이션 */
 main .card_select_jmj label:nth-child(1) {
 	animation: cardSpreadLeft1 0.5s ease-out;
@@ -185,6 +178,27 @@ main .attackbutton_jmj:hover {
 	background: #ff3333;
 	cursor: url("../images/click_cursor.png"), pointer !important;
     transform: translateY(-5px);
+}
+
+main .counterbutton_jmj {
+	font-family: "Jersey 10", sans-serif;
+	font-weight: 200;
+	font-style: normal;
+	padding: 0 20px;
+	font-size: 35px;
+	background-color: #09ba00;
+	color: #fff;
+	border: 3px solid #fff;
+	border-radius: 15px;
+	margin-bottom: 30px;
+    margin-top: 30px;
+	transition: all 0.2s ease;
+}
+
+main .counterbutton_jmj:hover {
+	background: #0ee802;
+	cursor: url("../images/click_cursor.png"), pointer !important;
+	transform: translateY(-5px);
 }
 
 footer {
