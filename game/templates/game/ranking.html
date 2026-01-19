@@ -1,13 +1,22 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}랭킹{% endblock %}
+{% block title %}Ranking{% endblock %}
 
 {% block header %}
 <link rel="stylesheet" href="{% static 'game/css/ranking.css' %}">
 {% endblock %}
 
 {% block content %}
+<header>
+    <h3>PIROGRAMMER CARD GAME</h3>
+    <div class="header_menu">
+        <a href="{% url 'game:create_game' %}">Game</a>
+        <a href="{% url 'game:ranking' %}">Ranking</a>
+        <a href="/accounts/logout/">Logout</a>
+    </div>
+</header>
+<footer></footer>
 <div class="ranking_wrapper_mw">
     
     <div class="ranking_card_mw">
@@ -58,8 +67,8 @@
         </div>
     </div>
     
-    <div style="margin-top: 20px;">
-        <a href="{% url 'game:list_game' %}" style="color: #fff; text-decoration: underline;">Game List</a>
+    <div class="game_list_link_wrap_mw">
+        <a href="{% url 'game:list_game' %}">Game List</a>
     </div>
 
 </div>

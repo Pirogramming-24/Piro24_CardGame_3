@@ -6,8 +6,11 @@ body {
     font-family: "Jersey 10", sans-serif;
     background-color: #100e24;
     background-image: url("../images/background.png");
-    background-size: cover;
-    background-position: center;
+    background-size: cover;       /* 이미지를 화면 꽉 차게 늘림 (중간 끊김 해결) */
+    background-repeat: no-repeat; /* 바둑판식 반복 금지 */
+    background-position: center;  /* 중앙 정렬 */
+    background-attachment: fixed;
+    min-height: 100vh;
     color: #fff;
     cursor: url("../images/cursor.png"), auto !important;
 }
@@ -16,6 +19,7 @@ body {
     max-width: 1000px;
     margin: 0 auto;
     padding: 40px 20px;
+    min-height: calc(100vh - 180px);
 }
 
 /* 헤더 영역 */
@@ -185,4 +189,107 @@ body {
     0% { opacity: 1; }
     50% { opacity: 0.7; }
     100% { opacity: 1; }
+}
+
+/* --- [공통] 헤더(메뉴바) & 푸터 스타일 --- */
+
+header {
+	height: 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 85px;
+	background: #100e24;
+	color: #fff1a8;
+    /* 폰트 설정 (필요시 주석 해제) */
+    /* font-family: "Jersey 10", sans-serif; */
+}
+
+header h3 {
+	font-size: 30px;
+	font-style: normal;
+    margin: 0; /* h3 기본 여백 제거 */
+}
+
+header h3:hover {
+	color: #ffe100;
+	cursor: url("../images/click_cursor.png"), pointer !important;
+}
+
+header .header_menu {
+	display: flex;
+	font-size: 30px;
+	font-style: normal;
+}
+
+header .header_menu a {
+	margin: 0 20px;
+    color: #fff1a8;        /* 링크 색상 유지 */
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+header .header_menu a:hover {
+	color: #ffe100;
+	cursor: url("../images/click_cursor.png"), pointer !important;
+}
+
+footer {
+	height: 50px;
+	background: #100e24;
+}
+
+/* game/static/game/css/list_game.css */
+
+/* --- 상태 배지 공통 스타일 (둥근 알약 모양) --- */
+.badge_common_mw {
+    display: inline-block;
+    font-family: "Jersey 10", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    
+    padding: 3px 20px;       /* 내부 여백 */
+    border-radius: 20px;     /* 둥근 모서리 */
+    border: 2px solid #000;  /* 검은색 테두리 */
+    box-shadow: 0 4px 0 rgba(0,0,0,0.3); /* 입체감 그림자 */
+    transition: transform 0.1s;
+}
+
+.badge_common_mw:hover {
+    transform: translateY(2px); /* 눌리는 효과 */
+    box-shadow: 0 2px 0 rgba(0,0,0,0.3);
+}
+
+/* 1. 승리 (WIN) - 파란색 */
+.badge_win_mw {
+    background-color: #3B5486;
+    width: 60px; /* 고정 너비 (선택사항) */
+}
+
+/* 2. 패배 (LOSE) - 빨간색 */
+.badge_lose_mw {
+    background-color: #D62020;
+    width: 60px;
+}
+
+/* 4. 반격하기 (Counter Attack) - 초록색 */
+.badge_counter_mw {
+    background-color: #09ba00;
+    animation: blink 1.5s infinite; /* 깜빡임 효과 유지 */
+}
+
+/* 5. 취소 (CANCEL) - 노란색 */
+.badge_cancel_mw {
+    background-color: #ffe100;
+    font-size: 16px;
+    padding: 3px 10px;
+}
+
+/* "playing..." 텍스트 스타일 */
+.playing_text_mw {
+    font-size: 20px;
+    color: #ddd;
+    margin-right: 10px;
 }
