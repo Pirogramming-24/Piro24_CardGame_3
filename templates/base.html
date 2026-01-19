@@ -1,21 +1,25 @@
-<!-- templates/base.html -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>{% block title %}Site{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Piro Card Game{% endblock %}</title>
+    {% block header %}{% endblock %}
 </head>
 <body>
-  <header>
-    {% block header %}{% endblock %}
-  </header>
+    <header>
+        <h3>PIROGRAMMER CARD GAME</h3>
+        <div class="header_menu">
+            <a href="{% url 'game:create_game' %}">Game</a>
+            <a href="{% url 'game:ranking' %}">Ranking</a>
+            <a href="/accounts/logout/">Logout</a>
+        </div>
+    </header>
 
-  <main>
-    {% block content %}{% endblock %}
-  </main>
+    {% block content %}
+    {% endblock %}
 
-  <footer>
-    {% block footer %}{% endblock %}
-  </footer>
+    <footer></footer>
 </body>
 </html>

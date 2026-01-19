@@ -293,3 +293,21 @@ footer {
     color: #ddd;
     margin-right: 10px;
 }
+
+.result_title_jmj {
+    font-family: "Jersey 10", sans-serif;
+    font-size: 24px;       /* 리스트에서는 너무 크면 안 되니까 적당히 */
+    font-weight: bold;
+    margin: 0;             /* 불필요한 여백 제거 */
+    text-shadow: 2px 2px 0 #000; /* 글자 그림자 효과 (선택사항) */
+}
+
+/* 승리할 때 색상 (파란색) */
+.result_title_jmj.win {
+    color: #3B5486;
+}
+
+/* 패배할 때 색상 (빨간색) */
+.result_title_jmj.lose {
+    color: #D62020;
+}

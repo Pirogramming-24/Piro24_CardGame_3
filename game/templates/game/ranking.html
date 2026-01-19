@@ -8,15 +8,6 @@
 {% endblock %}
 
 {% block content %}
-<header>
-    <h3>PIROGRAMMER CARD GAME</h3>
-    <div class="header_menu">
-        <a href="{% url 'game:create_game' %}">Game</a>
-        <a href="{% url 'game:ranking' %}">Ranking</a>
-        <a href="/accounts/logout/">Logout</a>
-    </div>
-</header>
-<footer></footer>
 <div class="ranking_wrapper_mw">
     
     <div class="ranking_card_mw">
@@ -62,6 +53,7 @@
         <div class="my_position_bar_mw">
             <span class="label_mw">Your Position</span>
             <span class="my_rank_info_mw">
+                <span style="margin-right: 20px;">RANK <strong>{{ my_rank }}</strong></span>
                 SCORE <strong>{{ user.profile.score }}</strong>
             </span>
         </div>
