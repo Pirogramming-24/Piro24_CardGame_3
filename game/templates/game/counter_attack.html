@@ -1,32 +1,63 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'game/css/counter_attack.css' %}" />
-<header>
-	<h3>PIROGRAMMER CARD GAME</h3>
-	<div class="header_menu">
-		<p>Game</p>
-		<p>Ranking</p>
-		<p>Logout</p>
-	</div>
-</header>
 
-<p>{{ game.attacker }} vs {{ game.defender }}</p>
+<body>
+	<header>
+		<h3>PIROGRAMMER CARD GAME</h3>
+		<div class="header_menu">
+			<p>Game</p>
+			<p>Ranking</p>
+			<p>Logout</p>
+		</div>
+	</header>
+	<main>
+		<h3>PICK YOUR CARD</h3>
+		<form method="post" action="{% url 'game:submit_counter' game.id %}">
+			{% csrf_token %}
+			<div class="card_select_jmj">
+				{% for card in cards %}
+				<label>
+					<input
+						type="radio"
+						name="card"
+						value="{{ card }}"
+						required
+					/>
+					{{ card }}
+				</label>
+				{% endfor %}
+			</div>
+			<button class="counterbutton_jmj" type="submit">
+				Counter Attack!
+			</button>
+		</form>
+	</main>
+	<footer></footer>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			console.log("Script loaded");
 
-<p>Attcker: {{ game.attacker_card }}</p>
+			const radios = document.querySelectorAll(
+				'input[type="radio"][name="card"]',
+			);
+			console.log("Found radios:", radios.length);
 
-<p>반격 카드를 선택하세요:</p>
+			radios.forEach((radio) => {
+				radio.addEventListener("change", function () {
+					console.log("Radio changed:", this.value);
 
-<form method="POST" action="{% url 'game:submit_counter' game.id %}">
-	{% csrf_token %} {% for card in cards %}
-	<label>
-		<input type="radio" name="card" value="{{ card }}" required />
-		{{ card }}
-	</label>
-	<br />
-	{% endfor %}
+					document
+						.querySelectorAll(".card_select_jmj label")
+						.forEach((label) => {
+							label.classList.remove("selected");
+						});
 
-	<br />
-	<button type="submit">반격하기</button>
-</form>
-
-<br />
-<a href="{% url 'game:list_game' %}">게임 목록으로</a>
+					if (this.checked) {
+						this.parentElement.classList.add("selected");
+						console.log("Selected class added");
+					}
+				});
+			});
+		});
+	</script>
+</body>
