@@ -1,0 +1,48 @@
+{% load static %}
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="{% static 'account/css/main.css' %}" />
+		<title>Pirogammer Card Game</title>
+	</head>
+	<body>
+		<header>
+			<h3>PIROGRAMMER CARD GAME</h3>
+			<div class="header_menu">
+				{% if user.is_authenticated %}
+				<a href="/game/">Game</a>
+				<a href="/game/ranking/">Ranking</a>
+				<a href="/logout/">Logout</a>
+				{% else %}
+				<a href="/login/">Login</a>
+				<a href="/signup/">Sign Up</a>
+				{% endif %}
+			</div>
+		</header>
+		<main>
+			<img src="../static/account/images/game.png" alt="game" class="icon_game_jmj" />
+			<h1>PIRO GAME</h1>
+			{% if user.is_authenticated %}
+			<p class="user_name_jmj">{{ request.user.username }}</p>
+			{% else %}
+			<p class="user_name_jmj">Log in to start playing.</p>
+            {% endif %}
+			<div class="gamestart_jmj">
+				{% if user.is_authenticated %}
+				<a href="/game/create">Start</a>
+				<a href="/game/list">List</a>
+                {% else %}
+				<a href="/login/">Start</a>
+                {% endif %}
+			</div>
+			<img
+				src="../static/account/images/monster.png"
+				alt="몬스터"
+				class="icon_moster_jmj"
+			/>
+		</main>
+		<footer></footer>
+	</body>
+</html>

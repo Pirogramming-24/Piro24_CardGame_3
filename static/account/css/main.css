@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Jersey+10&display=swap");
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	cursor: url("../images/cursor.png"), auto !important;
+}
+
+body {
+	font-family: "Jersey 10", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	cursor: url("../images/cursor.png"), auto !important;
+}
+
+header {
+	height: 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 85px;
+	background: #100E24;
+	color: #fff1a8;
+}
+
+header h3 {
+	font-size: 30px;
+	font-style: normal;
+}
+
+header h3:hover {
+	color: #ffe100;
+	cursor: url("../images/click_cursor.png"), pointer !important;
+}
+
+header .header_menu {
+	display: flex;
+	font-size: 30px;
+	font-style: normal;
+}
+
+header .header_menu a {
+	text-decoration: none;
+	color: #fff1a8;
+	margin: 0 20px;
+}
+
+header .header_menu a:hover {
+	color: #ffe100;
+	cursor: url("../images/click_cursor.png"), pointer !important;
+}
+
+main {
+	width: 100%;
+	min-height: calc(100vh - 100px);
+	background-image: url("../images/background.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+main .icon_game_jmj {
+	width: 160px;
+	margin: 50px auto -15px;
+	animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+	0% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+main h1 {
+	color: var(--point1, #ffe100);
+	-webkit-text-stroke-width: 10px;
+	-webkit-text-stroke-color: #000;
+	font-size: 110px;
+	font-weight: 50;
+    paint-order: stroke fill;
+}
+
+main .user_name_jmj {
+    color: #fff1a8;
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+main .gamestart_jmj {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+main .gamestart_jmj a {
+	display: inline-block;
+	width: 200px;
+	height: 60px;
+	background: #fff;
+	border: 4px solid #000;
+	border-radius: 30px;
+	text-align: center;
+	font-size: 55px;
+	line-height: 55px;
+	margin: 0 10px;
+    transition: all 0.2s ease;
+	text-decoration: none;
+	color: #000;
+}
+
+main .gamestart_jmj a:hover {
+	background: #000;
+	color: #fff;
+	cursor: url("../images/click_cursor.png"), pointer !important;
+}
+
+main .icon_moster_jmj {
+	width: 900px;
+	margin: 0 auto -15px;
+	opacity: 0.9;
+}
+
+footer {
+	height: 50px;
+	background: #100E24;
+}
