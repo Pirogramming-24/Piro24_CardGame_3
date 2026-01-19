@@ -1,0 +1,188 @@
+@import url("https://fonts.googleapis.com/css2?family=Jersey+10&display=swap");
+
+/* 전체 배경 및 폰트 설정 */
+body {
+    margin: 0;
+    font-family: "Jersey 10", sans-serif;
+    background-color: #100e24;
+    background-image: url("../images/background.png");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    cursor: url("../images/cursor.png"), auto !important;
+}
+
+.list_container_mw {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* 헤더 영역 */
+.list_header_area_mw {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 10px;
+}
+
+.user_info_mw h3 {
+    font-size: 20px;
+    color: #ccc;
+    margin: 0 0 5px 0;
+}
+
+.user_info_mw p {
+    font-size: 40px;
+    margin: 0;
+    line-height: 1;
+}
+
+.highlight_mw {
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 2px 2px 0 #3B5486;
+}
+
+/* 필터 버튼 */
+.filter_buttons_mw {
+    display: flex;
+    gap: 10px;
+}
+
+.filter_btn_mw {
+    background-color: #5d6dbe;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 20px;
+    border-radius: 20px;
+    font-size: 20px;
+    border: 2px solid #100e24;
+    transition: all 0.2s;
+}
+
+.filter_btn_mw:hover, .filter_btn_mw.active_mw {
+    background-color: #8fa0ff;
+    border-color: #fff;
+    transform: translateY(-2px);
+}
+
+.header_line_mw {
+    border: 0;
+    height: 2px;
+    background-color: #fff;
+    margin-bottom: 30px;
+    opacity: 0.5;
+}
+
+/* 리스트 아이템 */
+.game_list_mw {
+    list-style: none;
+    padding: 0;
+}
+
+.game_item_mw {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 28px;
+    /* 리스트 아이템에 마우스 올렸을 때 효과 */
+    padding: 10px;
+    border-radius: 10px;
+    transition: background-color 0.2s;
+}
+
+.game_item_mw:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 1. 게임 텍스트 */
+.game_info_text_mw {
+    width: 40%;
+}
+
+/* 2. 상태 배지 영역 (중앙) */
+.game_status_badge_mw {
+    width: 30%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 배지 스타일들 */
+.badge_counter_mw {
+    background-color: #09ba00; /* 초록색 */
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 20px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    font-size: 20px;
+    animation: blink 1.5s infinite; /* 깜빡임 효과 */
+}
+
+.badge_cancel_mw {
+    background-color: #ffe100; /* 노란색 */
+    color: #000;
+    text-decoration: none;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 18px;
+    border: 2px solid #000;
+}
+
+.status_text_mw {
+    font-size: 24px;
+    color: #ddd;
+}
+
+/* 3. 상세보기 버튼 */
+.btn_game_info_mw {
+    background-color: #3B5486;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 20px;
+    border-radius: 20px;
+    border: 2px solid #fff;
+    font-size: 20px;
+}
+
+.btn_game_info_mw:hover {
+    background-color: #5d6dbe;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 0 #100e24;
+}
+
+.no_game_mw {
+    text-align: center;
+    font-size: 24px;
+    color: #888;
+    margin-top: 50px;
+}
+
+/* 페이지네이션 */
+.pagination_mw {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 24px;
+}
+.pagination_mw a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    border-bottom: 1px solid transparent;
+}
+.pagination_mw a:hover {
+    border-color: #ffe100;
+    color: #ffe100;
+}
+
+/* 깜빡임 애니메이션 */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}

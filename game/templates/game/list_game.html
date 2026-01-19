@@ -1,50 +1,66 @@
-<h2>내 게임 목록</h2>
+{% extends "base.html" %}
+{% load static %}
 
-<div>
-    <a href="?filter=all">전체</a> |
-    <a href="?filter=ongoing">진행중</a> |
-    <a href="?filter=finished">종료</a>
-</div>
+{% block title %}Game History{% endblock %}
 
-<hr>
+{% block header %}
+<link rel="stylesheet" href="{% static 'game/css/list_game.css' %}">
+{% endblock %}
 
-{% for game in page_obj %}
-    <p>
-        {{ game.attacker }} vs {{ game.defender }} |
+{% block content %}
+<div class="list_container_mw">
+    
+    <div class="list_header_area_mw">
+        <div class="user_info_mw">
+            <h3>History List</h3> <p>player : <span class="highlight_mw">{{ request.user.username }}</span></p>
+        </div>
+        
+        <div class="filter_buttons_mw">
+            <a href="?filter=all" class="filter_btn_mw {% if filter == 'all' %}active_mw{% endif %}">ALL</a>
+            <a href="?filter=ongoing" class="filter_btn_mw {% if filter == 'ongoing' %}active_mw{% endif %}">IN PLAY</a>
+            <a href="?filter=finished" class="filter_btn_mw {% if filter == 'finished' %}active_mw{% endif %}">FINISHED</a>
+        </div>
+    </div>
 
-        {% if game.can_counter %}
-            <a href="{% url 'game:counter_attack' game.id %}">CounterAttack</a>
+    <hr class="header_line_mw">
 
-        {% elif game.can_cancel %}
-            <a href="{% url 'game:game_cancel' game.id %}">취소</a>
+    <ul class="game_list_mw">
+        {% for game in page_obj %}
+        <li class="game_item_mw">
+            <div class="game_info_text_mw">
+                {{ game.id }} - {{ game.attacker.username }} vs {{ game.defender.username }}
+            </div>
 
-        {% else %}
-            {{ game.display_status }}
+            <div class="game_status_badge_mw">
+                {% if game.can_counter %}
+                    <a href="{% url 'game:counter_attack' game.id %}" class="badge_counter_mw">CounterAttack</a>
+
+                {% elif game.can_cancel %}
+                    <span class="status_text_mw">playing...</span>
+                    <a href="{% url 'game:game_cancel' game.id %}" class="badge_cancel_mw">cancel</a>
+
+                {% else %}
+                    <span class="status_text_mw">{{ game.display_status }}</span>
+                {% endif %}
+            </div>
+
+            <a href="{% url 'game:game_detail' game.id %}" class="btn_game_info_mw">Game Info</a>
+        </li>
+        {% empty %}
+        <li class="no_game_mw">No Game History.</li>
+        {% endfor %}
+    </ul>
+
+    <div class="pagination_mw">
+        {% if page_obj.has_previous %}
+            <a href="?filter={{ filter }}&page={{ page_obj.previous_page_number }}">Back</a>
         {% endif %}
-        | <a href="{% url 'game:game_detail' game.id %}">상세보기</a>
 
-    </p>
-{% empty %}
-    <p>게임이 없습니다.</p>
-{% endfor %}
+        <span>{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
 
-<hr>
-
-<div>
-    {% if page_obj.has_previous %}
-        <a href="?filter={{ filter }}&page=1">처음</a>
-        <a href="?filter={{ filter }}&page={{ page_obj.previous_page_number }}">이전</a>
-    {% endif %}
-
-    <span>
-        {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
-    </span>
-
-    {% if page_obj.has_next %}
-        <a href="?filter={{ filter }}&page={{ page_obj.next_page_number }}">다음</a>
-        <a href="?filter={{ filter }}&page={{ page_obj.paginator.num_pages }}">마지막</a>
-    {% endif %}
+        {% if page_obj.has_next %}
+            <a href="?filter={{ filter }}&page={{ page_obj.next_page_number }}">Next</a>
+        {% endif %}
+    </div>
 </div>
-
-
-
+{% endblock %}
