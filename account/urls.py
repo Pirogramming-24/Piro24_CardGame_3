@@ -5,6 +5,7 @@ from . import views
 
 urlpatterns = [
 
+    path("", views.main, name="main"),
     # api 주소
     path("api/account/me/", views.me, name="me"),
     path("api/account/me/profile/", views.my_profile, name="my_profile"),
