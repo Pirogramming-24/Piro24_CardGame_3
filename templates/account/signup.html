@@ -2,87 +2,71 @@
 <!-- 회원가입 화면 -->
 <!-- !!! 절대 위치 옮기면 안돼요 !!! -->
 <!-- allauth 회원가입 html을 덮어씌우는 구조 -->
+{% extends "base.html" %}
 {% load static %}
 
-<!doctype html>
-<html lang="ko">
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="{% static 'account/css/signup.css' %}" />
-	<title>Sign Up</title>
-</head>
-<body>
-	<header>
-		<a href="/"><h3>PIROGRAMMER CARD GAME</h3></a>
-		<div class="header_menu">
-			{% if user.is_authenticated %}
-			<a href="/game/">Game</a>
-			<a href="/game/ranking/">Ranking</a>
-			<a href="/logout/">Logout</a>
-			{% else %}
-			<a href="/login/">Login</a>
-			<a href="/signup/">Sign Up</a>
-			{% endif %}
+{% block title %}Sign Up{% endblock %}
+
+{% block header %}
+<link rel="stylesheet" href="{% static 'account/css/signup.css' %}" />
+{% endblock %}
+
+{% block content %}
+<main>
+	<img
+		src="{% static 'account/images/game.png' %}"
+		alt="game"
+		class="icon_game_jmj"
+	/>
+	<h1>PIRO GAME</h1>
+	
+	<div class="signup_form_jmj">
+		<div class="signup_box_jmj">
+			<form method="post" action="{% url 'account_signup' %}">
+				{% csrf_token %}
+
+				<p>
+					<label for="{{ form.username.id_for_label }}">ID</label>
+					{{ form.username }}
+				</p>
+				{% if form.username.errors %}
+					<div class="error">{{ form.username.errors }}</div>
+				{% endif %}
+
+				{% if form.email %}
+				<p>
+					<label for="{{ form.email.id_for_label }}">Email</label>
+					{{ form.email }}
+				</p>
+				{% if form.email.errors %}
+					<div class="error">{{ form.email.errors }}</div>
+				{% endif %}
+				{% endif %}
+
+				<p>
+					<label for="{{ form.password1.id_for_label }}">Password</label>
+					{{ form.password1 }}
+				</p>
+				{% if form.password1.errors %}
+					<div class="error">{{ form.password1.errors }}</div>
+				{% endif %}
+
+				<p>
+					<label for="{{ form.password2.id_for_label }}">Confirm</label>
+					{{ form.password2 }}
+				</p>
+				{% if form.password2.errors %}
+					<div class="error">{{ form.password2.errors }}</div>
+				{% endif %}
+
+				{% if form.non_field_errors %}
+					<div class="error">{{ form.non_field_errors }}</div>
+				{% endif %}
+
+				<button type="submit">Sign Up</button>
+			</form>
 		</div>
-	</header>
-	<main>
-		<img
-			src="{% static 'account/images/game.png' %}"
-			alt="game"
-			class="icon_game_jmj"
-		/>
-		<h1>PIRO GAME</h1>
-		
-		<div class="signup_form_jmj">
-			<div class="signup_box_jmj">
-				<form method="post" action="{% url 'account_signup' %}">
-					{% csrf_token %}
-
-					<p>
-						<label for="{{ form.username.id_for_label }}">ID</label>
-						{{ form.username }}
-					</p>
-					{% if form.username.errors %}
-						<div class="error">{{ form.username.errors }}</div>
-					{% endif %}
-
-					{% if form.email %}
-					<p>
-						<label for="{{ form.email.id_for_label }}">Email</label>
-						{{ form.email }}
-					</p>
-					{% if form.email.errors %}
-						<div class="error">{{ form.email.errors }}</div>
-					{% endif %}
-					{% endif %}
-
-					<p>
-						<label for="{{ form.password1.id_for_label }}">Password</label>
-						{{ form.password1 }}
-					</p>
-					{% if form.password1.errors %}
-						<div class="error">{{ form.password1.errors }}</div>
-					{% endif %}
-
-					<p>
-						<label for="{{ form.password2.id_for_label }}">Confirm</label>
-						{{ form.password2 }}
-					</p>
-					{% if form.password2.errors %}
-						<div class="error">{{ form.password2.errors }}</div>
-					{% endif %}
-
-					{% if form.non_field_errors %}
-						<div class="error">{{ form.non_field_errors }}</div>
-					{% endif %}
-
-					<button type="submit">Sign Up</button>
-				</form>
-			</div>
-			<a href="{% url 'account_login' %}">Back to Login</a>
-		</div>
-	</main>
-	<footer></footer>
-</body>
-</html>
+		<a href="{% url 'account_login' %}">Back to Login</a>
+	</div>
+</main>
+{% endblock %}
