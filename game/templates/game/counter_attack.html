@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Counter Attack{% endblock %}
+
+{% block header %}
+<link rel="stylesheet" href="{% static 'game/css/counter_attack.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <h3>PICK YOUR CARD</h3>
+    <form method="post" action="{% url 'game:submit_counter' game.id %}">
+        {% csrf_token %}
+        <div class="card_select_jmj">
+            {% for card in cards %}
+            <label>
+                <input
+                    type="radio"
+                    name="card"
+                    value="{{ card }}"
+                    required
+                />
+                {{ card }}
+            </label>
+            {% endfor %}
+        </div>
+        <button class="counterbutton_jmj" type="submit">
+            Counter Attack!
+        </button>
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const radios = document.querySelectorAll(
+                'input[type="radio"][name="card"]',
+            );
+            radios.forEach((radio) => {
+                radio.addEventListener("change", function () {
+                    document
+                        .querySelectorAll(".card_select_jmj label")
+                        .forEach((label) => {
+                            label.classList.remove("selected");
+                        });
+
+                    if (this.checked) {
+                        this.parentElement.classList.add("selected");
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

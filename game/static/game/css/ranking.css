@@ -1,0 +1,241 @@
+@import url("https://fonts.googleapis.com/css2?family=Jersey+10&display=swap");
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Jersey 10", sans-serif;
+    background-color: #100e24;
+    background-image: url("../images/background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #fff;
+    cursor: url("../images/cursor.png"), auto !important;
+}
+
+header {
+	height: 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 85px;
+	background: #100e24;
+	color: #fff1a8;
+}
+
+header > a {
+	text-decoration: none;
+	color: #fff1a8;
+    display: flex;
+    align-items: center;
+}
+
+header h3 {
+	font-size: 30px;
+	font-style: normal;
+    margin: 0;
+}
+
+header > a:hover h3 {
+	color: #ffe100;
+	cursor: url("../images/click_cursor.png"), pointer !important;
+}
+
+header .header_menu {
+	display: flex;
+	font-size: 30px;
+	font-style: normal;
+}
+
+header .header_menu a {
+	text-decoration: none;
+	color: #fff1a8;
+	margin: 0 20px;
+}
+
+header .header_menu a:hover {
+	color: #ffe100;
+	cursor: url("../images/click_cursor.png"), pointer !important;
+}
+
+/* 2. 중앙 정렬 래퍼 */
+.ranking_wrapper_mw {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* 3. 메인 랭킹 카드 */
+.ranking_card_mw {
+    background-color: #3B5486;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 20px;
+    border: 3px solid #100e24;
+    padding: 40px 20px 40px 60px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    position: relative;
+}
+
+/* 4. 타이틀 */
+.ranking_title_mw {
+    font-size: 45px;
+    margin: 0 0 30px 0;
+    color: #fff;
+    text-shadow: 3px 3px 0 #000;
+    letter-spacing: 1px;
+}
+
+/* 5. 테이블 헤더 */
+.table_header_mw {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px 10px 20px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #ddd;
+    font-weight: bold;
+}
+
+.table_header_mw span {
+    text-align: center;
+}
+.table_header_mw span:nth-child(1) { width: 20%; }
+.table_header_mw span:nth-child(2) { width: 50%; }
+.table_header_mw span:nth-child(3) { width: 30%; }
+
+
+/* 6. 랭킹 리스트 스크롤 영역 */
+.ranking_list_scroll_mw {
+    max-height: 350px; 
+    overflow-y: auto;
+    margin-bottom: 30px;
+    padding-right: 5px; 
+}
+
+/* 스크롤바 디자인 */
+.ranking_list_scroll_mw::-webkit-scrollbar {
+    width: 8px;
+}
+.ranking_list_scroll_mw::-webkit-scrollbar-thumb {
+    background-color: #100e24;
+    border-radius: 4px;
+}
+.ranking_list_scroll_mw::-webkit-scrollbar-track {
+    background-color: rgba(0,0,0,0.1);
+}
+
+
+/* 7. 테이블 스타일 */
+.ranking_table_mw {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.rank_row_mw td {
+    padding: 12px 0;
+    font-size: 26px;
+    vertical-align: middle;
+}
+
+.rank_num_mw { width: 20%; text-align: center; }
+.player_name_mw { width: 50%; text-align: center; }
+.score_mw { width: 30%; text-align: center; }
+
+.top_rank_mw .rank_num_mw {
+    font-size: 32px; 
+}
+.top_rank_mw .score_mw {
+    color: #ffe100;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.nickname_small {
+    display: block;
+    font-size: 16px;
+    color: #ccc;
+    margin-top: -5px;
+}
+
+
+/* 8. 하단 내 정보 바 */
+.my_position_bar_mw {
+    background-color: #C0C0C0; 
+    border-radius: 15px;
+    border: 2px solid #000;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #100e24; 
+    font-size: 26px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+    transform: translate(-20px, 0px);
+}
+
+.label_mw {
+    background-color: #3B5486;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 8px;
+    font-size: 20px;
+    border: 1px solid #100e24;
+}
+
+.my_rank_info_mw strong {
+    font-size: 30px;
+    font-weight: bold;
+    color: #d62020; 
+}
+
+
+/* 9. 뒤로가기 링크 */
+.ranking_wrapper_mw a {
+    font-size: 22px;
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.ranking_wrapper_mw a:hover {
+    color: #ffe100;
+    text-decoration: underline;
+}
+
+/*왕관 이미지 스타일 */
+.crown_img_mw {
+    width: 40px;          
+    height: auto;         
+    vertical-align: middle;
+    transform: translate(13px, 0px); 
+}
+
+/* 'Game List' 링크 위치 및 스타일 조절 */
+.game_list_link_wrap_mw {
+    margin-top: 30px;    
+    text-align: center;  
+    transform: translate(-10px, 0px); 
+}
+
+.game_list_link_wrap_mw a {
+    color: #fff;              
+    text-decoration: underline;
+    font-size: 24px;          
+}
+
+.game_list_link_wrap_mw a:hover {
+    color: #ffe100;           
+    text-decoration: none;    
+}
+
+footer {
+	height: 50px;
+	background: #100e24;
+}

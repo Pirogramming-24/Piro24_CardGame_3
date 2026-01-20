@@ -1,0 +1,310 @@
+@import url("https://fonts.googleapis.com/css2?family=Jersey+10&display=swap");
+
+/* 전체 배경 및 폰트 설정 */
+body {
+    margin: 0;
+    font-family: "Jersey 10", sans-serif;
+    background-color: #100e24;
+    background-image: url("../images/background.png");
+    background-size: cover;       
+    background-repeat: no-repeat; 
+    background-position: center;  
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: #fff;
+    cursor: url("../images/cursor.png"), auto !important;
+}
+
+.list_container_mw {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    min-height: calc(100vh - 180px);
+}
+
+/* 헤더 영역 */
+.list_header_area_mw {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 10px;
+}
+
+.user_info_mw h3 {
+    font-size: 20px;
+    color: #ccc;
+    margin: 0 0 5px 0;
+}
+
+.user_info_mw p {
+    font-size: 40px;
+    margin: 0;
+    line-height: 1;
+}
+
+.highlight_mw {
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 2px 2px 0 #3B5486;
+}
+
+/* 필터 버튼 */
+.filter_buttons_mw {
+    display: flex;
+    gap: 10px;
+}
+
+.filter_btn_mw {
+    background-color: #5d6dbe;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 20px;
+    border-radius: 20px;
+    font-size: 20px;
+    border: 2px solid #100e24;
+    transition: all 0.2s;
+}
+
+.filter_btn_mw:hover, .filter_btn_mw.active_mw {
+    background-color: #8fa0ff;
+    border-color: #fff;
+    transform: translateY(-2px);
+}
+
+.header_line_mw {
+    border: 0;
+    height: 2px;
+    background-color: #fff;
+    margin-bottom: 30px;
+    opacity: 0.5;
+}
+
+/* 리스트 아이템 */
+.game_list_mw {
+    margin: 0;
+    list-style: none;
+    padding: 20px 10px;
+    background: #22222299;
+}
+
+.game_item_mw {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 28px;
+    padding: 10px;
+    border-radius: 10px;
+    transition: background-color 0.2s;
+}
+
+.game_item_mw:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 1. 게임 텍스트 */
+.game_info_text_mw {
+    width: 40%;
+}
+
+.game_status_badge_mw {
+    width: 30%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 배지 스타일들 */
+.badge_counter_mw {
+    background-color: #09ba00; 
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 20px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    font-size: 20px;
+    animation: blink 1.5s infinite; 
+}
+
+.badge_cancel_mw {
+    background-color: #ffe100; 
+    color: #000;
+    text-decoration: none;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 18px;
+    border: 2px solid #000;
+}
+
+.status_text_mw {
+    font-size: 24px;
+    color: #ddd;
+}
+
+/* 3. 상세보기 버튼 */
+.btn_game_info_mw {
+    background-color: #3B5486;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 20px;
+    border-radius: 20px;
+    border: 2px solid #fff;
+    font-size: 20px;
+}
+
+.btn_game_info_mw:hover {
+    background-color: #5d6dbe;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 0 #100e24;
+}
+
+.no_game_mw {
+    text-align: center;
+    font-size: 24px;
+    color: #888;
+    margin-top: 50px;
+}
+
+/* 페이지네이션 */
+.pagination_mw {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 24px;
+}
+.pagination_mw a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    border-bottom: 1px solid transparent;
+}
+.pagination_mw a:hover {
+    border-color: #ffe100;
+    color: #ffe100;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+header {
+	height: 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 85px;
+	background: #100e24;
+	color: #fff1a8;
+}
+
+header h3 {
+	font-size: 30px;
+	font-style: normal;
+    margin: 0; 
+}
+
+header h3:hover {
+	color: #ffe100;
+	cursor: url("../images/click_cursor.png"), pointer !important;
+}
+
+header .header_menu {
+	display: flex;
+	font-size: 30px;
+	font-style: normal;
+}
+
+header .header_menu a {
+	margin: 0 20px;
+    color: #fff1a8;        
+    text-decoration: none; 
+}
+
+header .header_menu a:hover {
+	color: #ffe100;
+	cursor: url("../images/click_cursor.png"), pointer !important;
+}
+
+footer {
+	height: 50px;
+	background: #100e24;
+}
+
+.badge_common_mw {
+    display: inline-block;
+    font-family: "Jersey 10", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    
+    padding: 3px 20px;       
+    border-radius: 20px;     
+    border: 2px solid #000;  
+    box-shadow: 0 4px 0 rgba(0,0,0,0.3); 
+    transition: transform 0.1s;
+}
+
+.badge_common_mw:hover {
+    transform: translateY(2px); 
+    box-shadow: 0 2px 0 rgba(0,0,0,0.3);
+}
+
+.badge_win_mw {
+    background-color: #3B5486;
+    width: 60px; 
+}
+
+.badge_lose_mw {
+    background-color: #D62020;
+    width: 60px;
+}
+
+.badge_counter_mw {
+    background-color: #09ba00;
+    animation: blink 1.5s infinite; 
+}
+
+.badge_cancel_mw {
+    background-color: #ffe100;
+    font-size: 16px;
+    padding: 3px 10px;
+}
+
+.playing_text_mw {
+    font-size: 20px;
+    color: #ddd;
+    margin-right: 10px;
+}
+
+.result_title_jmj {
+    font-family: "Jersey 10", sans-serif;
+    font-size: 24px;       
+    font-weight: bold;
+    margin: 0;             
+    text-shadow: 2px 2px 0 #000; 
+}
+
+.result_title_jmj.win {
+    color: lch(59.1 113.24 287.99 / 1);
+}
+
+.result_title_jmj.lose {
+    color: #D62020;
+}
+
+header a {
+    text-decoration: none; 
+    color: #fff1a8;        
+    display: flex;         
+    align-items: center;   
+}
+
+header a h3:hover {
+    color: #ffe100;
+    cursor: url("../images/click_cursor.png"), pointer !important;
+}

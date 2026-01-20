@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Pirogammer Card Game{% endblock %}
+
+{% block header %}
+<link rel="stylesheet" href="{% static 'account/css/main.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <img src="{% static 'account/images/game.png' %}" alt="game" class="icon_game_jmj" />
+    
+    <h1>PIRO GAME</h1>
+    
+    {% if user.is_authenticated %}
+        <p class="user_name_jmj">{{ request.user.username }}</p>
+    {% else %}
+        <p class="user_name_jmj">Log in to start playing.</p>
+    {% endif %}
+
+    <div class="gamestart_jmj">
+        {% if user.is_authenticated %}
+            <a href="{% url 'game:create_game' %}">Start</a>
+            <a href="{% url 'game:list_game' %}">List</a>
+        {% else %}
+            <a href="/accounts/login/">Start</a>
+        {% endif %}
+    </div>
+
+    <img src="{% static 'account/images/monster.png' %}" alt="몬스터" class="icon_moster_jmj" />
+{% endblock %}

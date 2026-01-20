@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Piro Card Game{% endblock %}</title>
+    
+    {% block header %}{% endblock %}
+</head>
+<body>
+    <header>
+        <a href="/">
+            <h3>PIROGRAMMER CARD GAME</h3>
+        </a>
+        <div class="header_menu">
+            {% if user.is_authenticated %}
+                <a href="{% url 'game:create_game' %}">Game</a>
+                <a href="{% url 'game:ranking' %}">Ranking</a>
+                <a href="/accounts/logout/">Logout</a>
+            {% else %}
+                <a href="/accounts/login/">Login</a>
+                <a href="/accounts/signup/">Sign Up</a>
+            {% endif %}
+        </div>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer></footer>
+</body>
+</html>

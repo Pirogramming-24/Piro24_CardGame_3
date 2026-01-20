@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Ranking{% endblock %}
+
+{% block header %}
+<link rel="stylesheet" href="{% static 'game/css/ranking.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="ranking_wrapper_mw">
+    
+    <div class="ranking_card_mw">
+        <h2 class="ranking_title_mw">Piro Hall of Fame</h2>
+        
+        <div class="table_header_mw">
+            <span>RANK</span>
+            <span>PLAYER</span>
+            <span>SCORE</span>
+        </div>
+
+        <div class="ranking_list_scroll_mw">
+            <table class="ranking_table_mw">
+                <tbody>
+                    {% for profile in profiles %}
+                    <tr class="rank_row_mw {% if forloop.counter <= 3 %}top_rank_mw{% endif %}">
+                        <td class="rank_num_mw">
+                            {% if forloop.counter == 1 %}
+                                <img src="{% static 'game/images/crown_gold.svg' %}" alt="Gold" class="crown_img_mw">
+                            {% elif forloop.counter == 2 %}
+                                <img src="{% static 'game/images/crown_silver.svg' %}" alt="Silver" class="crown_img_mw">
+                            {% elif forloop.counter == 3 %}
+                                <img src="{% static 'game/images/crown_bronze.svg' %}" alt="Bronze" class="crown_img_mw">
+                            {% else %}{{ forloop.counter }}th
+                            {% endif %}
+                        </td>
+                        
+                        <td class="player_name_mw">
+                            {{ profile.user.username }}
+                        </td>
+                        
+                        <td class="score_mw">{{ profile.score }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="3" style="padding: 20px;">User not found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="my_position_bar_mw">
+            <span class="label_mw">Your Position</span>
+            <span class="my_rank_info_mw">
+                <span style="margin-right: 20px;">RANK <strong>{{ my_rank }}</strong></span>
+                SCORE <strong>{{ user.profile.score }}</strong>
+            </span>
+        </div>
+    </div>
+    
+    <div class="game_list_link_wrap_mw">
+        <a href="{% url 'game:list_game' %}">Game List</a>
+    </div>
+
+</div>
+{% endblock %}

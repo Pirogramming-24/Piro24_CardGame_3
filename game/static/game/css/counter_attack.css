@@ -1,0 +1,200 @@
+@import url("https://fonts.googleapis.com/css2?family=Jersey+10&display=swap");
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	cursor: url("../images/cursor.png"), auto !important;
+}
+
+body {
+	font-family: "Jersey 10", sans-serif;
+	font-weight: 200;
+	font-style: normal;
+	cursor: url("../images/cursor.png"), auto !important;
+}
+
+header {
+	height: 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 85px;
+	background: #100e24;
+	color: #fff1a8;
+}
+
+header > a {
+	text-decoration: none;
+	color: #fff1a8;
+    display: flex;
+    align-items: center;
+}
+
+header h3 {
+	font-size: 30px;
+	font-style: normal;
+    margin: 0;
+}
+
+header > a:hover h3 {
+	color: #ffe100;
+	cursor: url("../images/click_cursor.png"), pointer !important;
+}
+
+header .header_menu {
+	display: flex;
+	font-size: 30px;
+	font-style: normal;
+}
+
+header .header_menu a {
+	text-decoration: none;
+	color: #fff1a8;
+	margin: 0 20px;
+}
+
+header .header_menu a:hover {
+	color: #ffe100;
+	cursor: url("../images/click_cursor.png"), pointer !important;
+}
+
+/* 메인 컨텐츠 */
+main {
+	width: 100%;
+	min-height: calc(100vh - 100px);
+	background-image: url("../images/background.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	text-align: center;
+}
+
+main h3 {
+	font-size: 80px;
+	color: #ffe100;
+	padding-top: 30px;
+}
+
+main .defender_jmj {
+	display: flex;
+	justify-content: center;
+}
+main .defender_jmj p {
+	color: #fff1a8;
+	font-size: 35px;
+	margin-right: 20px;
+}
+main .defender_jmj select {
+	width: 150px;
+	border-radius: 10px;
+	padding-left: 10px;
+}
+
+main .card_select_jmj {
+	display: flex;
+	justify-content: space-evenly;
+	margin: 10px 100px;
+	align-items: center;
+}
+
+main .card_select_jmj label {
+    display: inline-block;
+	width: 160px;
+	height: 240px;
+	background: #fff;
+	border: 4px solid #000;
+	border-radius: 30px;
+	margin: 15px 0;
+	font-size: 50px;
+	line-height: 240px;
+	transition: all 0.3s ease; 
+	opacity: 1;
+}
+
+main .card_select_jmj label input[type="radio"] {
+    display: none;
+}
+
+main .card_select_jmj label:hover {
+	border-color: #d62020;
+	color: #d62020;
+	cursor: url("../images/click_cursor.png"), pointer !important;
+	transform: translateY(-5px) scale(1.05);
+}
+
+main .card_select_jmj label.selected {
+    background: #fff1a8 !important;
+    border-color: #d62020 !important;
+    color: #d62020 !important;
+    transform: scale(1.1) !important;
+}
+
+/* 애니메이션 */
+main .card_select_jmj label:nth-child(1) {
+	animation: cardSpreadLeft1 0.5s ease-out backwards;
+	animation-delay: 0.2s;
+}
+main .card_select_jmj label:nth-child(2) {
+	animation: cardSpreadLeft2 0.5s ease-out backwards;
+	animation-delay: 0.1s;
+}
+main .card_select_jmj label:nth-child(3) {
+	animation: cardSpreadCenter 0.5s ease-out backwards;
+	animation-delay: 0s;
+}
+main .card_select_jmj label:nth-child(4) {
+	animation: cardSpreadRight2 0.5s ease-out backwards;
+	animation-delay: 0.1s;
+}
+main .card_select_jmj label:nth-child(5) {
+	animation: cardSpreadRight1 0.5s ease-out backwards;
+	animation-delay: 0.2s;
+}
+
+@keyframes cardSpreadLeft1 {
+	from { opacity: 1; transform: translateX(340px); }
+	to { opacity: 1; transform: translateX(0); }
+}
+@keyframes cardSpreadLeft2 {
+	from { opacity: 1; transform: translateX(170px); }
+	to { opacity: 1; transform: translateX(0); }
+}
+@keyframes cardSpreadCenter {
+	from { opacity: 1; transform: translateX(0); }
+	to { opacity: 1; transform: translateX(0); }
+}
+@keyframes cardSpreadRight2 {
+	from { opacity: 1; transform: translateX(-170px); }
+	to { opacity: 1; transform: translateX(0); }
+}
+@keyframes cardSpreadRight1 {
+	from { opacity: 1; transform: translateX(-340px); }
+	to { opacity: 1; transform: translateX(0); }
+}
+
+main .counterbutton_jmj {
+	font-family: "Jersey 10", sans-serif;
+	font-weight: 200;
+	font-style: normal;
+	padding: 0 20px;
+	font-size: 35px;
+	background-color: #09ba00;
+	color: #fff;
+	border: 3px solid #fff;
+	border-radius: 15px;
+	margin-bottom: 30px;
+    margin-top: 30px;
+	transition: all 0.2s ease;
+}
+
+main .counterbutton_jmj:hover {
+	background: #0ee802;
+	cursor: url("../images/click_cursor.png"), pointer !important;
+	transform: translateY(-5px);
+}
+
+footer {
+	height: 50px;
+	background: #100e24;
+}
